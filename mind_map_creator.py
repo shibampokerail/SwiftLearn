@@ -9,12 +9,10 @@ def save_mind_map_image(summary_data):
     G = nx.DiGraph()
     G.add_nodes_from(summary_data['Nodes'])
 
-    # Add edges with attributes
     for edge, attribute in zip(summary_data['Edges'], summary_data['Attributes']):
         G.add_edge(*edge, label=attribute)
 
-    # Draw the mind map with improved spacing
-    pos = nx.spring_layout(G, seed=42, k=1)  # Experiment with different values of k
+    pos = nx.spring_layout(G, seed=42, k=1) 
     plt.figure(figsize=(16, 10))
     nx.draw(G, pos, with_labels=True, node_size=3000, node_color='lightblue', font_size=12, font_color='black',
             font_weight='bold', edge_color='gray', linewidths=0.5, edgecolors='black', alpha=0.7, arrowsize=20)
@@ -24,7 +22,7 @@ def save_mind_map_image(summary_data):
 
     plt.title('Mind Map', fontsize=16)
     plt.tight_layout()
-    plt.savefig('static/mind_map.png', format='png')  # Save the plot as an image
+    plt.savefig('static/mind_map.png', format='png')  
     # plt.show()
     return summary_data
 

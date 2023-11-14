@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Page</title>
+</head><style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.chat-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.chat-header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.chat-body {
+    padding: 15px;
+    overflow-y: scroll;
+    max-height: 300px;
+}
+
+.chat-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+input {
+    flex: 1;
+    padding: 8px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+</style>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Chat with Your Document</h2>
+        </div>
+        <div class="chat-body" id="chat-body">
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+        </div>
+        <form class="chat-footer" method="post" action="/send_message">
+            <input type="text" id="user-input" name="message" placeholder="Type your message...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+<script>
+    function sendMessage() {
+    var userInput = document.getElementById('user-input').value;
+
+    document.getElementById('chat-body').innerHTML += `<div class="user-message">${userInput}</div>`;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://127.0.0.1:8000/send_message', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var botResponse = JSON.parse(xhr.responseText).bot_response;
+            document.getElementById('chat-body').innerHTML += `<div class="bot-message">${botResponse}</div>`;
+        }
+    };
+    xhr.send('user_input=' + encodeURIComponent(userInput));
+}
+</script>
+</html>

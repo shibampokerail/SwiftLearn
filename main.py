@@ -22,7 +22,6 @@ def remove_html_tags(text):
 app.config['UPLOAD_FOLDER'] = 'uploads'
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.mkdir(app.config['UPLOAD_FOLDER'])
-# Ensure that uploaded files have a secure filename
 app.config['ALLOWED_EXTENSIONS'] = {'pdf'}
 
 @app.route('/')
@@ -105,7 +104,6 @@ def upload_file():
 
     file = request.files['file']
 
-    # If the user does not select a file, the browser submits an empty part without a filename
     if file.filename == '':
         return render_template("index.html", message="No file selected")
 
@@ -146,6 +144,3 @@ def upload_file():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8000)
-
-# https://www.youtube.com/watch?v=OoQLoKHhohg&t=64s&ab_channel=Fireship
-# https://www.youtube.com/watch?v=y3F0W_Zmq9s&ab_channel=Ironbreaker

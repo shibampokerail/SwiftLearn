@@ -12,7 +12,7 @@
 - ![image](https://github.com/shibampokerail/SwiftLearn/assets/95929007/8763a0ba-1b2b-4ec3-99f9-f15e161b1eb8)
 
 ## How to run?
--first install packages required
+- first install packages required
 ```
 pip install -r requirements.txt
 ```

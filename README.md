@@ -12,12 +12,12 @@
 - ![image](https://github.com/shibampokerail/SwiftLearn/assets/95929007/8763a0ba-1b2b-4ec3-99f9-f15e161b1eb8)
 
 ## How to run?
-- first install packages required
+- First, install the required packages
 ```
 pip install -r requirements.txt
 ```
-- replace '<api_key>' with your openAI api key in main.py and mind_map_creator.py
-- then run
+- Then, replace '<api_key>' with your openAI api key in main.py and mind_map_creator.py
+- And finally, run
 ```
 python main.py
 ```

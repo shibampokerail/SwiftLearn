@@ -3,10 +3,10 @@
 
 
 ## What does it do?
-- takes in a youtube video link
-- returns a chart that will help you learn and understand the content of the video better.
-- Can chat with youtube video's transcript
-- Can also upload pdf files instead of youtube video links
+- Takes in a youtube video link
+- Creates a chart that will help you learn and understand the content of the video better.
+- You can also chat with youtube video's transcript.
+- You can also upload pdf files and chat with them instead of youtube video links.
 
 ## How does it work?
 - ![image](https://github.com/shibampokerail/SwiftLearn/assets/95929007/8763a0ba-1b2b-4ec3-99f9-f15e161b1eb8)

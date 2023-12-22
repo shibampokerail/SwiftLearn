@@ -2,304 +2,48 @@
 <html lang="en">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Upload Form</title>
-    <style>
-        * {
-    margin: 0;
-   }
-   body {
-    font-family: 'Open Sans', sans-serif;
-
-   }
-   .banner-text {
-    width: 100%;
-    position: absolute;
-    z-index: 1;
-   }
-   .banner-text ul {
-    height: 50px;
-    float: right;
-   }
-   .banner-text ul li {
-    display: inline-block;
-    padding: 40px 15px;
-    text-transform: uppercase;
-    color: #fff;
-    font-size: 20px;
-   }
-   .banner-text ul li:hover {
-    cursor: pointer;
-   }
-   .banner-text h2 {
-    text-align: center;
-    color: #fff;
-    font-size: 50px;
-    margin-top: 20%;
-   }
-   .animation-area {
-    background: linear-gradient(to left, #8942a8, #ba382f);
-    width: 100%;
-    height: 100vh;
-    overflow-y: auto;
-   }
-   .box-area {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-   }
-   .box-area li {
-    position: absolute;
-    display: block;
-    list-style: none;
-    width: 25px;
-    height: 25px;
-    background: rgba(255, 255, 255, 0.2);
-    animation: animate 20s linear infinite;
-    bottom: -150px;
-   }
-   .box-area li:nth-child(1) {
-    left: 86%;
-    width: 80px;
-    height: 80px;
-    animation-delay: 0s;
-   }
-   .box-area li:nth-child(2) {
-    left: 12%;
-    width: 30px;
-    height: 30px;
-    animation-delay: 1.5s;
-    animation-duration: 10s;
-   }
-   .box-area li:nth-child(3) {
-    left: 70%;
-    width: 100px;
-    height: 100px;
-    animation-delay: 5.5s;
-   }
-   .box-area li:nth-child(4) {
-    left: 42%;
-    width: 150px;
-    height: 150px;
-    animation-delay: 0s;
-    animation-duration: 15s;
-   }
-   .box-area li:nth-child(5) {
-    left: 65%;
-    width: 40px;
-    height: 40px;
-    animation-delay: 0s;
-   }
-   .box-area li:nth-child(6) {
-    left: 15%;
-    width: 110px;
-    height: 110px;
-    animation-delay: 3.5s;
-   }
-   @keyframes animate {
-    0% {
-     transform: translateY(0) rotate(0deg);
-     opacity: 1;
-    }
-    100% {
-     transform: translateY(-800px) rotate(360deg);
-     opacity: 0;
-    }
-   }
-
-
-        form {
-            margin-top: 20px;
-            width: 100%;
-            max-width: 400px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        ::file-selector-button {
-            display: none;
-        }
-
-        input[type="file"], input[type="text"] {
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 30px;
-            width: 100%;
-            box-sizing: border-box;
-
-        }
-
-        input[type="file"]:hover {
-            cursor:pointer;
-        }
-
-        input[type="submit"] {
-            background-color: #00B2FF;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color:#006AFF ;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
-        }
-
-        p {
-            color: #333;
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
-<body><center>
-<div class="banner-text">
-     {% if message %}
-     <br>
-        <p style="font-weight:bold; color:white; padding:10px;">{{ message }}</p>
-    {%else%}
-            <h2 style="font-weight:bold; color:white; padding:10px;">SwiftLearn</h2>
-
-    {% endif %}
-    {% if image %}
-        <img src="{{ url_for('static', filename='mind_map.png') }}" alt="Mind Map Image">
-        <input type="button" value="Chat" onclick="window.href('/chat')">
-    {% endif %}
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <label for="file">Select a Document:</label>
-        <input type="file" id="file" name="file" required>
-        <input type="submit"  value="Upload">
-    </form>
-    <form action="/upload" method="post">
-        <label for="text">Paste a YouTube URL:</label>
-        <input type="text" id="text" name="url" placeholder="https://www.youtube.com/watch?v=your_video_id">
-        <input type="submit"  value="Submit">
-    </form>
-</div></center>
-      <div class="animation-area">
-
-
-  <ul class="box-area">
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-   <li></li>
-  </ul>
-     </div>
-
+<body>
+<center><!--I apologize for using this atrocious tag I was in a hurry-->
+    <div class="banner-text">
+         {% if message %}
+         <br>
+            <p style="font-weight:bold; color:white; padding:10px;">{{ message }}</p>
+        {%else%}
+                <h2 style="font-weight:bold; color:white; padding:10px;">SwiftLearn</h2>
+    
+        {% endif %}
+        {% if image %}
+            <img src="{{ url_for('static', filename='mind_map.png') }}" alt="Mind Map Image">
+            <input type="button" value="Chat" onclick="window.href('/chat')">
+        {% endif %}
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="file">Select a Document:</label>
+            <input type="file" id="file" name="file" required>
+            <input type="submit"  value="Upload">
+        </form>
+        <form action="/upload" method="post">
+            <label for="text">Paste a YouTube URL:</label>
+            <input type="text" id="text" name="url" placeholder="https://www.youtube.com/watch?v=your_video_id">
+            <input type="submit"  value="Submit">
+        </form>
+    </div>
+</center>
+<div class="animation-area">
+      <ul class="box-area">
+           <li></li>
+           <li></li>
+           <li></li>
+           <li></li>
+           <li></li>
+           <li></li>
+      </ul>
+</div>
+<script type="text/javascript" src="script.js"></script>
 </body>
-<script>
-        function replaceHTML() {
-            document.body.innerHTML = `
-                <div class="kinetic"></div>
-
-                <style>
-                    :root {
-                        --primary-color: #181625;
-                        --accent-pink: #a876aa;
-                        --accent-white: #e2e7ee;
-                    }
-
-                    * {
-                        box-sizing: border-box;
-                    }
-
-                    body {
-                        background-color: var(--primary-color);
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        height: 100vh;
-                        overflow: hidden;
-                        margin: 0;
-                    }
-
-                    .kinetic {
-                        position: relative;
-                        height: 80px;
-                        width: 80px;
-                    }
-
-                    .kinetic::before,
-                    .kinetic::after {
-                        content: "";
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 0;
-                        height: 0;
-                        border: 50px solid transparent;
-                        border-bottom-color: var(--accent-pink);
-                        animation: rotateA 2s ease-in-out infinite 0.5s,
-                            color-change 2s ease-in-out infinite 1s;
-                    }
-
-                    .kinetic::before {
-                        animation: rotateB 2s ease-in-out infinite,
-                            color-change 2s ease-in-out infinite;
-                    }
-
-                    @keyframes rotateA {
-                        0%,
-                        25% {
-                            transform: rotate(0deg);
-                        }
-
-                        50%,
-                        75% {
-                            transform: rotate(180deg);
-                        }
-
-                        100% {
-                            transform: rotate(360deg);
-                        }
-                    }
-
-                    @keyframes rotateB {
-                        0%,
-                        25% {
-                            transform: rotate(90deg);
-                        }
-
-                        50%,
-                        75% {
-                            transform: rotate(270deg);
-                        }
-
-                        100% {
-                            transform: rotate(450deg);
-                        }
-                    }
-
-                    @keyframes color-change {
-                        75% {
-                            border-bottom-color: var(--accent-white);
-                        }
-                    }
-                </style>
-            `;
-        }
-    </script>
 </html>
